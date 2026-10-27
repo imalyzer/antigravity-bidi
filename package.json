@@ -1,0 +1,31 @@
+{
+  "name": "antigravity-bidi",
+  "version": "1.0.0",
+  "description": "Smart BiDi & RTL isolation patch for Google Antigravity (Electron & Meta Lexical)",
+  "main": "scripts/smart_patch.js",
+  "scripts": {
+    "patch": "node scripts/smart_patch.js",
+    "restore": "node -e \"const fs = require('fs'); const p = require('path'); const target = path.join(process.env.LOCALAPPDATA, 'Programs', 'antigravity', 'resources'); const backup = path.join(target, 'app.asar.backup_before_patch'); const asar = path.join(target, 'app.asar'); if(fs.existsSync(backup)) { fs.copyFileSync(backup, asar); console.log('Restored factory app.asar successfully.'); } else { console.error('No backup found at: ' + backup); }\""
+  },
+  "keywords": [
+    "antigravity",
+    "electron",
+    "lexical",
+    "bidi",
+    "rtl",
+    "persian",
+    "arabic",
+    "devtools",
+    "patch"
+  ],
+  "author": "imalyzer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imalyzer/antigravity-bidi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/imalyzer/antigravity-bidi/issues"
+  },
+  "homepage": "https://github.com/imalyzer/antigravity-bidi#readme"
+}
