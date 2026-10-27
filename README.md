@@ -1,9 +1,26 @@
+<div align="center">
+
 # Antigravity BiDi & RTL Isolation Engine
+
+**پچ راست‌چین هوشمند و تفکیک خط‌به‌خط فارسی/انگلیسی در گوگل آنتی‌گرویتی**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D6.svg)](https://microsoft.com)
 [![Engine: Electron](https://img.shields.io/badge/Electron-Desktop-47848F.svg)](https://electronjs.org)
 [![Editor: Meta Lexical](https://img.shields.io/badge/Editor-Meta%20Lexical-0081FB.svg)](https://lexical.dev)
+
+<br/>
+
+**[English](#english-documentation)** • **[راهنمای فارسی](#-راهنمای-فارسی-persian-documentation)** • **[README_FA.md](README_FA.md)**
+
+</div>
+
+> [!TIP]
+> **🇮🇷 راهنمای فارسی:** برای مشاهده راهنما و آموزش نصب به زبان فارسی، به بخش **[راهنمای فارسی](#-راهنمای-فارسی-persian-documentation)** در پایین همین صفحه یا فایل اختصاصی **[README_FA.md](README_FA.md)** مراجعه کنید.
+
+---
+
+## English Documentation
 
 A lightweight, non-destructive, and self-healing BiDi (Bidirectional) engine for **Google Antigravity 2.0** desktop app.
 
@@ -11,7 +28,7 @@ Provides native, real-time line-by-line RTL (Persian / Arabic / Hebrew) and LTR 
 
 ---
 
-## The Problem: Meta Lexical in Desktop AI Clients
+### The Problem: Meta Lexical in Desktop AI Clients
 
 Modern AI desktop clients powered by Electron and Meta's Lexical framework suffer from critical BiDi flaws:
 
@@ -24,7 +41,7 @@ Modern AI desktop clients powered by Electron and Meta's Lexical framework suffe
 
 ---
 
-## The Solution: Multi-Paragraph Lexical Architecture
+### The Solution: Multi-Paragraph Lexical Architecture
 
 This patch intercepts Lexical's internal command pipeline at `COMMAND_PRIORITY_CRITICAL` (4):
 
@@ -39,14 +56,14 @@ This patch intercepts Lexical's internal command pipeline at `COMMAND_PRIORITY_C
 
 ---
 
-## Quick Start (1-Click Installation)
+### Quick Start (1-Click Installation)
 
-### Prerequisites
+#### Prerequisites
 * Windows 10 / 11
 * [Node.js](https://nodejs.org) (v18+ recommended)
 * Google Antigravity installed
 
-### Installation
+#### Installation
 1. Download or clone this repository:
    ```bash
    git clone https://github.com/imalyzer/antigravity-bidi.git
@@ -55,13 +72,13 @@ This patch intercepts Lexical's internal command pipeline at `COMMAND_PRIORITY_C
 2. Double-click **`1_Apply_Patch.bat`** (or run `npm run patch`).
 3. Launch Google Antigravity. Your input box and chat history now support seamless mixed-direction typing!
 
-### Factory Restore (Uninstall)
+#### Factory Restore (Uninstall)
 To completely revert Antigravity to its pristine, original Google state:
 * Double-click **`2_Restore_Original.bat`** (or run `npm run restore`).
 
 ---
 
-## Dynamic In-Place Patcher (Update-Proof)
+### Dynamic In-Place Patcher (Update-Proof)
 
 Unlike static binary mods that break or downgrade the application when Google releases an update, this tool uses a **Dynamic In-Place Patcher** (`scripts/smart_patch.js`):
 
@@ -82,7 +99,7 @@ All new vendor features, bug fixes, and security patches from Google updates are
 
 ---
 
-## Technical Architecture
+### Technical Architecture
 
 ```text
 antigravity-bidi/
@@ -90,8 +107,8 @@ antigravity-bidi/
 ├── 2_Restore_Original.bat         # [Windows Launcher] 1-Click factory restore
 ├── LICENSE                        # MIT License
 ├── package.json                   # Project metadata & npm run scripts
-├── README.md                      # English documentation & technical architecture
-├── README_FA.md                   # Persian documentation & user guide
+├── README.md                      # Bilingual documentation & technical architecture
+├── README_FA.md                   # Dedicated Persian documentation & user guide
 ├── AGENT_GUIDE.md                 # Technical guide for AI coding assistants
 ├── patch/
 │   └── bidi_engine.js             # BiDi engine, CSS injector, Lexical hooks & DevTools shortcut
@@ -103,14 +120,66 @@ antigravity-bidi/
 
 ---
 
+<br/>
+
+---
+
+## 🇮🇷 راهنمای فارسی (Persian Documentation)
+
+این بخش شامل راهنمای کامل نصب، فعال‌سازی و مدیریت پچ هوشمند راست‌چین و تفکیک خط‌به‌خط فارسی/انگلیسی در چت و باکس ورودی **Google Antigravity 2.0** است.
+
+### فایل‌های اجرای سریع (با ۱ کلیک)
+
+| نام فایل | کاربرد | چه زمانی استفاده شود؟ |
+| :--- | :--- | :--- |
+| **`1_Apply_Patch.bat`** | **نصب و پچ هوشمند خودکار** | بعد از نصب اولیه Antigravity یا هر زمان که گوگل نسخهٔ جدیدی منتشر کرد. این اسکریپت نسخهٔ جدید گوگل را از سیستم استخراج کرده، موتور BiDi را تزریق و مجدداً بسته‌بندی می‌نماید (بدون از دست رفتن امکانات جدید گوگل). |
+| **`2_Restore_Original.bat`** | **بازگردانی به تنظیمات کارخانه** | هر زمان که خواستید Antigravity را بدون هیچ تغییری به حالت خام و اولیهٔ گوگل بازگردانید. |
+
+---
+
+### نحوه نصب و راه‌اندازی
+
+1. نرم‌افزار Antigravity را روی سیستم داشته باشید.
+2. این ریپازیتوری را دانلود کرده یا کلون کنید:
+   ```cmd
+   git clone https://github.com/imalyzer/antigravity-bidi.git
+   cd antigravity-bidi
+   ```
+3. روی فایل **`1_Apply_Patch.bat`** دابل‌کلیک کنید.
+   * اسکریپت به صورت خودکار پوشه نصب نرم‌افزار را پیدا می‌کند.
+   * از نسخه اصلی یک نسخه پشتیبان می‌گیرد.
+   * پچ را اعمال کرده و برای باز کردن نرم‌افزار تایید می‌گیرد.
+
+> **پیش‌نیاز:** برای اجرای پچر پویا، کافی است [Node.js](https://nodejs.org) (نسخه ۱۸ به بالا) روی سیستم شما نصب باشد.
+
+---
+
+### سناریوهای مهم
+
+#### ۱. اگر گوگل نرم‌افزار را آپدیت کرد چه کنیم؟
+گوگل با هر آپدیت، فایل‌های هسته را ریست می‌کند. کافی است مجدداً فایل **`1_Apply_Patch.bat`** را اجرا کنید. پچر هوشمند نسخه جدید گوگل را از روی سیستم خوانده، ۱۰۰٪ کدهای جدید گوگل را حفظ کرده و فقط موتور راست‌چین را به آن اضافه می‌کند.
+
+#### ۲. جلوگیری از آپدیت ناخواسته در تنظیمات برنامه
+اگر می‌خواهید برنامه روی نسخه فعلی بماند:
+1. در Antigravity روی علامت **چرخ‌دنده (Settings)** کلیک کنید.
+2. وارد **Editor Settings** شوید.
+3. عبارت **`update mode`** را جستجو کنید.
+4. مقدار **Update: Mode** را روی **`none`** یا **`manual`** قرار دهید.
+
+#### ۳. بازگردانی کامل به تنظیمات اولیه گوگل
+هر زمان مایل بودید پچ را حذف کنید، کافی است فایل **`2_Restore_Original.bat`** را اجرا کنید. این اسکریپت نسخه دست‌نخورده گوگل را فوراً جایگزین می‌کند.
+
+---
+
 ## Community & Support
 
-* **Issues & Bug Reports:** Please report any bugs or edge cases via [GitHub Issues](https://github.com/imalyzer/antigravity-bidi/issues).
-* **Discussions & Feedback:** Join the conversation on [GitHub Discussions](https://github.com/imalyzer/antigravity-bidi/discussions).
+* **Issues & Bug Reports:** [GitHub Issues](https://github.com/imalyzer/antigravity-bidi/issues)
+* **Discussions & Feedback:** [GitHub Discussions](https://github.com/imalyzer/antigravity-bidi/discussions)
+* **Developer / Author:** [imalyzer](https://github.com/imalyzer)
 
 ---
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE) - Copyright (c) 2026 **imalyzer**.
+This project is licensed under the [MIT License](LICENSE) - Copyright (c) 2026 **imalyzer**.  
 Google Antigravity is a trademark of Google LLC. This project is an independent open-source enhancement tool and is not affiliated with Google.

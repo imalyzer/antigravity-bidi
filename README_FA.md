@@ -1,4 +1,15 @@
-# راهنمای کامل نگهداری، نصب و مدیریت پچ راست‌چین Antigravity
+<div align="center">
+
+# راهنمای کامل پچ راست‌چین و تفکیک خط‌به‌خط Antigravity
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D6.svg)](https://microsoft.com)
+
+<br/>
+
+**[English](README.md)** • **[فارسی](README_FA.md)**
+
+</div>
 
 این ریپازیتوری شامل ابزارها، سورس‌ها و اسکریپت‌های سبک برای فعال‌سازی موتور هوشمند راست‌چین و تفکیک خط‌به‌خط فارسی/انگلیسی (BiDi Engine) در چت و ادیتور متنی **Google Antigravity 2.0** است.
 
