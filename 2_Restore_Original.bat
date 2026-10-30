@@ -1,3 +1,4 @@
 @echo off
 chcp 65001 >nul
-call "%~dp0scripts\restore_original.bat"
+call "%~dp0scripts\restore_original.bat" %*
+exit /b %ERRORLEVEL%

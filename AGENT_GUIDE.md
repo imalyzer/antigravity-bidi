@@ -32,23 +32,26 @@ This toolchain patches Google Antigravity 2.0 (Electron desktop application) to 
 
 ---
 
-## 2. Directory Architecture
+## 2. Directory Architecture (Crystallized Taxonomy & SKILL-15 Standards)
 
 ```text
 antigravity-bidi/
-├── 1_Apply_Patch.bat              # [Root Launcher] Dynamic in-place patcher (extracts, patches & repacks)
-├── 2_Restore_Original.bat         # [Root Launcher] Instant 1-click factory restore from backup
+├── .project-root                  # [Anchor] Dynamic root marker file (SKILL-15)
+├── paths.manifest.json            # [Manifest] Central logical path registry
+├── 1_Apply_Patch.bat              # [Root Forwarder] 1-Click transparent launcher (%*)
+├── 2_Restore_Original.bat         # [Root Forwarder] 1-Click factory restore launcher (%*)
 ├── LICENSE                        # MIT License (credited to imalyzer)
-├── package.json                   # Project manifest & npm scripts
+├── package.json                   # Project manifest, npm run patch/restore/audit
 ├── README.md                      # English documentation & technical architecture
 ├── README_FA.md                   # Persian user guide
 ├── AGENT_GUIDE.md                 # This technical guide (English)
 ├── patch/
 │   └── bidi_engine.js             # Standalone BiDi engine, CSS injector, Lexical hooks & DevTools relay
 └── scripts/
-    ├── smart_patch.js             # Dynamic Node.js engine for in-place ASAR patching
-    ├── smart_update_patch.bat     # Windows batch execution wrapper
-    └── restore_original.bat       # Portable factory restore script
+    ├── Invoke-WorkspaceAudit.ps1  # [Audit] Fast automated hygiene & link verification (< 2.0s)
+    ├── smart_patch.js             # Dynamic Node.js engine for in-place ASAR patching (# @PATH-REGISTRY)
+    ├── smart_update_patch.bat     # Windows batch execution wrapper with root walk-up
+    └── restore_original.bat       # Portable factory restore script with root walk-up
 ```
 
 ---

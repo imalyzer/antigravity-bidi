@@ -2,12 +2,32 @@
 chcp 65001 >nul
 setlocal EnableDelayedExpansion
 
+:: --- @PATH-REGISTRY-START (SKILL-15 Dynamic Root Anchor Walk-Up) ---
+set "CURR_DIR=%~dp0"
+:FindRootLoop
+if exist "%CURR_DIR%.project-root" (
+    set "PROJECT_ROOT=%CURR_DIR:~0,-1%"
+    goto :RootFound
+)
+for %%I in ("%CURR_DIR%..") do set "PARENT_DIR=%%~fI"
+if "%PARENT_DIR%"=="%CURR_DIR%" (
+    set "PROJECT_ROOT=%~dp0.."
+    goto :RootFound
+)
+set "CURR_DIR=%PARENT_DIR%\"
+goto :FindRootLoop
+:RootFound
+
 set "TARGET_DIR=%LOCALAPPDATA%\Programs\antigravity\resources"
-set "BACKUP_DIR=%~dp0..\backup"
+set "BACKUP_DIR=%PROJECT_ROOT%\backup"
+:: --- @PATH-REGISTRY-END ---
 
 echo =======================================================
 echo   Antigravity Restore Original (Factory Condition)
 echo =======================================================
+echo.
+echo Project Root     : !PROJECT_ROOT!
+echo Target Directory : !TARGET_DIR!
 echo.
 
 set "SOURCE_BACKUP="

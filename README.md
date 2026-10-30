@@ -103,19 +103,22 @@ All new vendor features, bug fixes, and security patches from Google updates are
 
 ```text
 antigravity-bidi/
-├── 1_Apply_Patch.bat              # [Windows Launcher] 1-Click smart patcher
-├── 2_Restore_Original.bat         # [Windows Launcher] 1-Click factory restore
-├── LICENSE                        # MIT License
-├── package.json                   # Project metadata & npm run scripts
+├── .project-root                  # [Anchor] Dynamic root marker file (SKILL-15)
+├── paths.manifest.json            # [Manifest] Central logical path registry
+├── 1_Apply_Patch.bat              # [Windows Launcher] 1-Click transparent forwarder (%*)
+├── 2_Restore_Original.bat         # [Windows Launcher] 1-Click factory restore forwarder (%*)
+├── LICENSE                        # MIT License (credited to imalyzer)
+├── package.json                   # Project metadata & npm scripts (patch / restore / audit)
 ├── README.md                      # Bilingual documentation & technical architecture
 ├── README_FA.md                   # Dedicated Persian documentation & user guide
 ├── AGENT_GUIDE.md                 # Technical guide for AI coding assistants
 ├── patch/
 │   └── bidi_engine.js             # BiDi engine, CSS injector, Lexical hooks & DevTools shortcut
 └── scripts/
+    ├── Invoke-WorkspaceAudit.ps1  # Fast workspace verification tool (< 2.0s)
     ├── smart_patch.js             # Dynamic Node.js ASAR extraction, patching & packing engine
-    ├── smart_update_patch.bat     # Windows orchestration batch wrapper
-    └── restore_original.bat       # Factory restoration batch wrapper
+    ├── smart_update_patch.bat     # Windows orchestration batch wrapper with root walk-up
+    └── restore_original.bat       # Factory restoration batch wrapper with root walk-up
 ```
 
 ---

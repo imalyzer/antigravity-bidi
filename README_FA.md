@@ -66,23 +66,26 @@
 
 ---
 
-## ۳. ساختار فایل‌های مخزن
+## ۳. ساختار فایل‌های مخزن (استاندارد مهارت ۱۵ تابلو)
 
 ```text
 antigravity-bidi/
-├── 1_Apply_Patch.bat              # [اجرای سریع] نصب و آپدیت خودکار پچ
-├── 2_Restore_Original.bat         # [اجرای سریع] بازگردانی ۱ کلیکه به تنظیمات اولیه
+├── .project-root                  # [نقطه لنگر] فایل نشانه ریشه پروژه برای آدرس‌دهی هوشمند
+├── paths.manifest.json            # [مانیفست مسیرها] رجیستری مرکزی مسیرهای منطقی
+├── 1_Apply_Patch.bat              # [اجرای سریع] لانچر فورواردر نصب و آپدیت خودکار
+├── 2_Restore_Original.bat         # [اجرای سریع] لانچر فورواردر بازگردانی کارخانه
 ├── LICENSE                        # لایسنس MIT (اعطا شده به imalyzer)
-├── package.json                   # اسکریپت‌های npm run patch و npm run restore
+├── package.json                   # اسکریپت‌های npm run patch، restore و audit
 ├── README.md                      # مستندات و معماری فنی سیستم به زبان انگلیسی
 ├── README_FA.md                   # همین راهنما به زبان فارسی
 ├── AGENT_GUIDE.md                 # راهنمای فنی برای ایجنت‌های هوش مصنوعی (انگلیسی)
 ├── patch/
 │   └── bidi_engine.js             # سورس موتور BiDi و هوک‌های Lexical در Main World
 └── scripts/
+    ├── Invoke-WorkspaceAudit.ps1  # ابزار سریع ارزیابی بهداشت و پایداری مسیرها (زیر ۲ ثانیه)
     ├── smart_patch.js             # موتور استخراج، تزریق هوشمند و پکینگ ASAR
-    ├── smart_update_patch.bat     # لانچر بچ اسکریپت برای پچ پویا
-    └── restore_original.bat       # لانچر بچ اسکریپت برای بازگردانی بک‌آپ
+    ├── smart_update_patch.bat     # لانچر بچ اسکریپت برای پچ پویا با واک‌آپ به ریشه
+    └── restore_original.bat       # لانچر بچ اسکریپت برای بازگردانی بک‌آپ با واک‌آپ به ریشه
 ```
 
 ---

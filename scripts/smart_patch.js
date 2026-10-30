@@ -2,14 +2,36 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const ROOT_DIR = path.resolve(__dirname, '..');
-const PATCH_DIR = path.join(ROOT_DIR, 'patch');
-const BUILD_DIR = path.join(ROOT_DIR, 'build');
-const TEMP_DIR = path.join(ROOT_DIR, 'temp_patch_stage');
+// @PATH-REGISTRY-START
+// Dynamic Project Root Anchor Walk-Up & Manifest Resolution (SKILL-15)
+function findProjectRoot(startDir) {
+    let current = path.resolve(startDir);
+    while (current && current !== path.parse(current).root) {
+        if (fs.existsSync(path.join(current, '.project-root'))) {
+            return current;
+        }
+        current = path.dirname(current);
+    }
+    return path.resolve(__dirname, '..'); // Resilient fallback
+}
+
+const ROOT_DIR = findProjectRoot(__dirname);
+let manifest = null;
+const manifestPath = path.join(ROOT_DIR, 'paths.manifest.json');
+if (fs.existsSync(manifestPath)) {
+    try {
+        manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+    } catch (_) {}
+}
+
+const PATCH_DIR = path.join(ROOT_DIR, manifest?.dirs?.patch || 'patch');
+const BUILD_DIR = path.join(ROOT_DIR, manifest?.dirs?.build || 'build');
+const TEMP_DIR = path.join(ROOT_DIR, manifest?.dirs?.tempStage || 'temp_patch_stage');
 const LOCAL_APPDATA = process.env.LOCALAPPDATA || path.join(process.env.USERPROFILE || 'C:\\Users\\Default', 'AppData', 'Local');
-const TARGET_DIR = path.join(LOCAL_APPDATA, 'Programs', 'antigravity', 'resources');
-const TARGET_ASAR = path.join(TARGET_DIR, 'app.asar');
-const OUTPUT_ASAR = path.join(BUILD_DIR, 'app.asar');
+const TARGET_DIR = path.join(LOCAL_APPDATA, manifest?.targetPaths?.resourcesRel || 'Programs/antigravity/resources');
+const TARGET_ASAR = path.join(TARGET_DIR, manifest?.targetPaths?.asarFilename || 'app.asar');
+const OUTPUT_ASAR = path.join(BUILD_DIR, manifest?.targetPaths?.asarFilename || 'app.asar');
+// @PATH-REGISTRY-END
 
 console.log('=======================================================');
 console.log('  Antigravity Smart In-Place Dynamic Patcher');

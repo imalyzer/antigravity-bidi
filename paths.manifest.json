@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project": "antigravity-bidi",
+  "version": "1.0.0",
+  "description": "Central Path Manifest for Antigravity Smart BiDi & RTL Patcher (SKILL-15)",
+  "anchors": {
+    "rootMarker": ".project-root"
+  },
+  "dirs": {
+    "patch": "patch",
+    "scripts": "scripts",
+    "backup": "backup",
+    "build": "build",
+    "tempStage": "temp_patch_stage"
+  },
+  "files": {
+    "bidiEngine": "patch/bidi_engine.js",
+    "smartPatchEngine": "scripts/smart_patch.js",
+    "smartUpdateBatch": "scripts/smart_update_patch.bat",
+    "restoreBatch": "scripts/restore_original.bat",
+    "auditScript": "scripts/Invoke-WorkspaceAudit.ps1",
+    "applyPatchShim": "1_Apply_Patch.bat",
+    "restoreShim": "2_Restore_Original.bat",
+    "manifest": "package.json",
+    "agentGuide": "AGENT_GUIDE.md",
+    "readmeEn": "README.md",
+    "readmeFa": "README_FA.md"
+  },
+  "targetPaths": {
+    "resourcesRel": "Programs/antigravity/resources",
+    "asarFilename": "app.asar",
+    "backupFilename": "app.asar.backup_before_patch",
+    "unpackedDir": "app.asar.unpacked/node_modules/chrome-devtools-mcp"
+  }
+}
