@@ -50,9 +50,12 @@ if "!SOURCE_BACKUP!"=="" (
 tasklist /FI "IMAGENAME eq Antigravity.exe" 2>nul | find /I /N "Antigravity.exe" >nul
 if "%ERRORLEVEL%"=="0" (
     echo [WARNING] Antigravity is currently running.
-    echo Closing Antigravity safely...
-    taskkill /F /IM "Antigravity.exe" >nul 2>&1
-    timeout /t 2 /nobreak >nul
+    set /p "CLOSE_APP=Would you like to close Antigravity now? [y/n]: "
+    if /I "!CLOSE_APP!"=="y" (
+        echo Closing Antigravity safely...
+        taskkill /F /IM "Antigravity.exe" >nul 2>&1
+        timeout /t 2 /nobreak >nul
+    )
 )
 
 echo [1/2] Restoring original app.asar from backup...

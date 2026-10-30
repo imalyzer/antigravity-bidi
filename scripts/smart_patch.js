@@ -73,7 +73,7 @@ fs.mkdirSync(TEMP_DIR, { recursive: true });
 
 // 4. Extract target ASAR
 console.log('[3/6] Extracting live app.asar from installation...');
-execSync(`npx asar extract "${TARGET_ASAR}" "${TEMP_DIR}"`, { stdio: 'inherit' });
+execSync(`npx --yes asar extract "${TARGET_ASAR}" "${TEMP_DIR}"`, { stdio: 'inherit' });
 
 // 5. Apply Patches
 console.log('[4/6] Applying Smart BiDi Engine & DevTools patches...');
@@ -150,7 +150,7 @@ console.log('[5/6] Repacking patched app.asar archive...');
 if (!fs.existsSync(BUILD_DIR)) {
     fs.mkdirSync(BUILD_DIR, { recursive: true });
 }
-execSync(`npx asar pack "${TEMP_DIR}" "${OUTPUT_ASAR}" --unpack-dir "node_modules/chrome-devtools-mcp"`, { stdio: 'inherit' });
+execSync(`npx --yes asar pack "${TEMP_DIR}" "${OUTPUT_ASAR}" --unpack-dir "node_modules/chrome-devtools-mcp"`, { stdio: 'inherit' });
 
 // 7. Deploy to Target
 console.log('[6/6] Deploying patched app.asar to Antigravity...');

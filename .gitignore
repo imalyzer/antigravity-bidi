@@ -11,6 +11,8 @@ temp_patch_stage/
 *.asar
 *.asar.unpacked/
 *.backup*
+*.rar
+*.zip
 
 # Screenshots & User media
 New folder/
