@@ -58,6 +58,7 @@ console.log('[4/6] Applying Smart BiDi Engine & DevTools patches...');
 const preloadPath = path.join(TEMP_DIR, 'dist', 'preload.js');
 const utilsPath = path.join(TEMP_DIR, 'dist', 'utils.js');
 const menuPath = path.join(TEMP_DIR, 'dist', 'menu.js');
+const debugConsolePath = path.join(TEMP_DIR, 'dist', 'debugConsole.js');
 const bidiEngineCode = fs.readFileSync(path.join(PATCH_DIR, 'bidi_engine.js'), 'utf-8');
 
 // Patch preload.js
@@ -76,6 +77,19 @@ if (fs.existsSync(preloadPath)) {
     process.exit(1);
 }
 
+// Patch debugConsole.js (Newer Antigravity releases)
+if (fs.existsSync(debugConsolePath)) {
+    let debugContent = fs.readFileSync(debugConsolePath, 'utf-8');
+    if (debugContent.includes('return !electron_1.app.isPackaged;')) {
+        debugContent = debugContent.replace(
+            'return !electron_1.app.isPackaged;',
+            'return true; // Patched: Enable DevTools across all windows & menu'
+        );
+        fs.writeFileSync(debugConsolePath, debugContent, 'utf-8');
+        console.log(' -> debugConsole.js patched: isDebugConsoleEnabled set to true.');
+    }
+}
+
 // Patch utils.js (DevTools)
 if (fs.existsSync(utilsPath)) {
     let utilsContent = fs.readFileSync(utilsPath, 'utf-8');
@@ -86,6 +100,13 @@ if (fs.existsSync(utilsPath)) {
         );
         fs.writeFileSync(utilsPath, utilsContent, 'utf-8');
         console.log(' -> utils.js patched: devTools set to true.');
+    } else if (utilsContent.includes('devTools: (0, debugConsole_1.isDebugConsoleEnabled)(),')) {
+        utilsContent = utilsContent.replace(
+            'devTools: (0, debugConsole_1.isDebugConsoleEnabled)(),',
+            'devTools: true, // Patched: Enabled DevTools for debugging & styles'
+        );
+        fs.writeFileSync(utilsPath, utilsContent, 'utf-8');
+        console.log(' -> utils.js patched: devTools explicitly set to true.');
     }
 }
 
